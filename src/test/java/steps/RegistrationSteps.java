@@ -7,14 +7,15 @@ public class RegistrationSteps {
 
     RegistrationPage registrationPage;
 
-    public RegistrationSteps(){
+    public RegistrationSteps() {
         registrationPage = new RegistrationPage();
     }
 
-    public void create(Account account) {
+    public void createAccount(Account account, String expectedMessage) {
         registrationPage.openPage()
                 .isPageOpened()
                 .create(account)
-                .save();
+                .save()
+                .validate(expectedMessage);
     }
 }

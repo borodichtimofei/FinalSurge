@@ -16,7 +16,7 @@
         <javafaker.version>1.0.2</javafaker.version>
         <lombok.version>1.18.22</lombok.version>
         <aspectjweaver.version>1.9.9.1</aspectjweaver.version>
-        <suiteXmlFile>src/test/resources/regression.xml</suiteXmlFile>
+        <suiteXmlFile>src/test/resources/smoke.xml</suiteXmlFile>
         <allure.version>2.10.0</allure.version>
         <maven.version>3.0.0-M4</maven.version>
         <log4j.version>2.17.2</log4j.version>
@@ -39,7 +39,7 @@
                 <version>${maven.version}</version>
                 <configuration>
                     <argLine>
-                        -javaagent:${settings.localRepository}/org/aspectj/aspectjweaver/${aspectjweaver.version}/aspectjweaver-1.9.9.1.jar
+                        -javaagent:${settings.localRepository}/org/aspectj/aspectjweaver/${aspectjweaver.version}/aspectjweaver-${aspectjweaver.version}.jar
                         -Xmx256m
                     </argLine>
                     <suiteXmlFiles>
