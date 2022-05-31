@@ -10,6 +10,11 @@ import static com.codeborne.selenide.Selenide.$;
 @Log4j2
 public class Input {
 
+    public static final String LOCATOR_REGISTRATION = "//label[text()='%s']/../input";
+    public static final String LOCATOR_WORKOUT_BASIC = "//label[text()='%s']//../following-sibling::input";
+    public static final String LOCATOR_WORKOUT_TIME = "//label[text()='%s']//..//div//input";
+    public static final String LOCATOR_WORKOUT_SECONDARY = "(//label[text()='%s']//../following-sibling::input)[2]";
+
     String label;
 
     public Input(String label) {
@@ -20,7 +25,7 @@ public class Input {
     public void WriteForRegistration(String text) {
         if (StringUtils.isNoneEmpty(text)) {
             log.info("Writing {} into  {}", text, label);
-            $(By.xpath(String.format("//label[text()='%s']/../input", label))).sendKeys(text);
+            $(By.xpath(String.format(LOCATOR_REGISTRATION, label))).sendKeys(text);
         }
     }
 
@@ -28,8 +33,8 @@ public class Input {
     public void basicWriteForAddWorkout(String text) {
         if (StringUtils.isNoneEmpty(text)) {
             log.info("Writing {} into  {}", text, label);
-            $(By.xpath(String.format("//label[text()='%s']//../following-sibling::input", label))).clear();
-            $(By.xpath(String.format("//label[text()='%s']//../following-sibling::input", label))).sendKeys(text);
+            $(By.xpath(String.format(LOCATOR_WORKOUT_BASIC, label))).clear();
+            $(By.xpath(String.format(LOCATOR_WORKOUT_BASIC, label))).sendKeys(text);
         }
     }
 
@@ -37,8 +42,8 @@ public class Input {
     public void timeWriteForAddWorkout(String text) {
         if (StringUtils.isNoneEmpty(text)) {
             log.info("Writing {} into  {}", text, label);
-            $(By.xpath(String.format("//label[text()='%s']//..//div//input", label))).clear();
-            $(By.xpath(String.format("//label[text()='%s']//..//div//input", label))).sendKeys(text);
+            $(By.xpath(String.format(LOCATOR_WORKOUT_TIME, label))).clear();
+            $(By.xpath(String.format(LOCATOR_WORKOUT_TIME, label))).sendKeys(text);
         }
     }
 
@@ -46,8 +51,8 @@ public class Input {
     public void secondaryWriteForAddWorkout(String text) {
         if (StringUtils.isNoneEmpty(text)) {
             log.info("Writing {} into  {}", text, label);
-            $(By.xpath(String.format("(//label[text()='%s']//../following-sibling::input)[2]", label))).clear();
-            $(By.xpath(String.format("(//label[text()='%s']//../following-sibling::input)[2]", label))).sendKeys(text);
+            $(By.xpath(String.format(LOCATOR_WORKOUT_SECONDARY, label))).clear();
+            $(By.xpath(String.format(LOCATOR_WORKOUT_SECONDARY, label))).sendKeys(text);
         }
     }
 

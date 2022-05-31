@@ -36,7 +36,7 @@ public class RegistrationPage extends BasePage {
 
     @Step("Input information for registration")
     public RegistrationPage create(Account account) {
-        log.info("Input information for registration account {}", account);
+        log.info("Input information for registration account {}", account.getEmailAddress());
         new Input("First Name").WriteForRegistration(account.getFirstName());
         new Input("Last Name").WriteForRegistration(account.getLastName());
         new Input("Email Address").WriteForRegistration(account.getEmailAddress());

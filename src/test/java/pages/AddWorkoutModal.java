@@ -18,6 +18,7 @@ import static com.codeborne.selenide.Selenide.$;
 public class AddWorkoutModal extends BasePage {
 
     public static final String MESSAGE = "Add New Workout";
+    public static final By ADD_WORKOUT_BUTTON = By.xpath("//input[@type = 'submit']");
 
     @Override
     public AddWorkoutModal isPageOpened() {
@@ -28,7 +29,7 @@ public class AddWorkoutModal extends BasePage {
 
     @Step("Input information for add workout")
     public AddWorkoutModal create(Workout workout) {
-        log.info("Input information for add workout {}", workout);
+        log.info("Input information for add workout {}", workout.getName());
         new Input("Workout Name").basicWriteForAddWorkout(workout.getName());
         new Input("Date").basicWriteForAddWorkout(workout.getDate());
         new Input("Time of Day").timeWriteForAddWorkout(workout.getTimeOfDay());
@@ -54,9 +55,10 @@ public class AddWorkoutModal extends BasePage {
     }
 
     @Step("Click on button 'Add workout'")
-    public void save() {
+    public WorkoutDetailsPage save() {
         log.info("Click on button 'Add workout'");
-        $(By.xpath("//input[@type = 'submit']")).click();
+        $(ADD_WORKOUT_BUTTON).click();
+        return new WorkoutDetailsPage();
     }
 }
 

@@ -7,11 +7,14 @@ import pages.base.BasePage;
 
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.$;
+import static com.codeborne.selenide.Selenide.switchTo;
 
 @Log4j2
 public class NavigationPage extends BasePage {
 
     public static final By USER_INFO = By.xpath("//div[@class = 'user-info']");
+    public static final By CALCULATOR_SELECT = By.xpath("//i[@class = 'icsw16-calculator']");
+    public static final By CALCULATOR_FRAME = By.id("OtherCalciFrame");
 
     @Override
     public NavigationPage isPageOpened() {
@@ -25,4 +28,12 @@ public class NavigationPage extends BasePage {
         $(byText(functionName)).click();
         return new AddWorkoutPage();
     }
+
+    public CalculatorModal selectCalculator(){
+        $(CALCULATOR_SELECT).click();
+        switchTo().frame($(CALCULATOR_FRAME));
+        return new CalculatorModal();
+    }
+
+
 }

@@ -7,3 +7,5 @@ public abstract class BasePage {
 
 
 }
+
+//div[@data-day='3' and @data-month='5' and @data-year='2022']//..//tr//i[@class ='icon-plus']

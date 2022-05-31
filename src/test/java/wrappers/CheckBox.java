@@ -10,17 +10,19 @@ import static com.codeborne.selenide.Selenide.$;
 @Log4j2
 public class CheckBox {
 
+    public static final String LOCATOR_WORKOUT = "//label[text()='%s']/..//div//label//span[text()='%s']/..//input";
+
     String label;
 
     public CheckBox(String label) {
         this.label = label;
     }
 
-    @Step("Click: {option} into: {label}")
+    @Step("Click: {option} on: {label}")
     public void click(String option) {
         if (StringUtils.isNoneEmpty(option)) {
             log.info("Select {} into {}", option, label);
-            $(By.xpath(String.format("//label[text()='%s']/..//div//label//span[text()='%s']/..//input", label, option))).
+            $(By.xpath(String.format(LOCATOR_WORKOUT, label, option))).
                     click();
         }
     }
