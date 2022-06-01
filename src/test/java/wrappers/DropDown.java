@@ -1,12 +1,19 @@
 package wrappers;
 
 import io.qameta.allure.Step;
+import lombok.extern.log4j.Log4j2;
+import org.apache.commons.lang3.StringUtils;
 import org.openqa.selenium.By;
 
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.$;
 
+@Log4j2
 public class DropDown {
+
+    public static final String LOCATOR_REGISTRATION = "//label[text()='%s']/../select";
+    public static final String LOCATOR_WORKOUT_BASIC = "//label[text()='%s']//../following-sibling::select";
+    public static final String LOCATOR_WORKOUT_SECONDARY = "(//label[text()='%s']//../following-sibling::select)[2]";
 
     String label;
 
@@ -14,9 +21,32 @@ public class DropDown {
         this.label = label;
     }
 
-    @Step("Select: {option} into: {select}")
-    public void select(String option) {
-        $(By.xpath(String.format("//label[text()='%s']/../select", label))).click();
+    @Step("Select: {option} into: {label}")
+    public void selectForRegistration(String option) {
+        log.info("Select {} into {}", option, label);
+        $(By.xpath(String.format(LOCATOR_REGISTRATION, label))).click();
         $(byText(option)).click();
     }
+
+    @Step("Select: {option} into: {label}")
+    public void basicSelectForAddWorkout(String option) {
+        if (StringUtils.isNoneEmpty(option)) {
+            log.info("Select {} into {}", option, label);
+            $(By.xpath(String.format(LOCATOR_WORKOUT_BASIC, label))).
+                    selectOption(option);
+        }
+    }
+
+    @Step("Select: {option} into: {label}")
+    public void secondarySelectForAddWorkout(String option) {
+        if (StringUtils.isNoneEmpty(option)) {
+            log.info("Select {} into {}", option, label);
+            $(By.xpath(String.format(LOCATOR_WORKOUT_SECONDARY, label))).
+                    selectOption(option);
+        }
+    }
+
+
 }
+
+
