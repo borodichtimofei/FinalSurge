@@ -14,10 +14,19 @@ public class CalculatorSteps {
         calculatorModal = new CalculatorModal();
     }
 
-    public void calculator(String typeCalculator, Calculator calculator) {
-        navigationPage.selectCalculator();
-        calculatorModal.selectCalculatorType(typeCalculator);
-        calculatorModal.calculation(calculator);
-        calculatorModal.calculatePaces();
+    public void calculation(String typeCalculator, Calculator calculator) {
+        navigationPage.selectCalculator().
+                isPageOpened().
+                selectCalculatorType(typeCalculator).
+                enterValues(calculator).
+                calculatePaces();
+    }
+
+    public void validateResult(String expectedPacePer, String expectedTime, String expectedSpeed) {
+        calculatorModal.validateResultCalculation(expectedPacePer, expectedTime, expectedSpeed);
+    }
+
+    public void validateError(String expectedErrorMessage) {
+        calculatorModal.validateErrorCalculation(expectedErrorMessage);
     }
 }

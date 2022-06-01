@@ -24,12 +24,15 @@ public class AddWorkoutSteps {
                 selectTypeActivity(typeActivity).
                 isPageOpened().
                 create(workout).
-                save().
-                isPageOpened();
+                save();
     }
 
-    public void validate(String activity, String typeActivity, Workout workout) {
-        workoutDetailsPage.validateActivity(activity, typeActivity);
+    public void validate(String expectedActivity, String expectedTypeActivity, Workout workout) {
+        workoutDetailsPage.validateActivity(expectedActivity, expectedTypeActivity);
         workoutDetailsPage.validateWorkout(workout);
+    }
+
+    public void validateErrorMessage(String expectedErrorMessage) {
+        addWorkoutModal.validateErrorAddWorkout(expectedErrorMessage);
     }
 }

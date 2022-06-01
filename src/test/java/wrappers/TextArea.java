@@ -18,7 +18,7 @@ public class TextArea {
         this.label = label;
     }
 
-    @Step("Writing: {text} into: {label}")
+    @Step("Writing: {text} into: {this.label}")
     public void write(String text) {
         if (StringUtils.isNoneEmpty(text)) {
             log.info("Writing {} into  {}", text, label);

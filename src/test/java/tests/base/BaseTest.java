@@ -1,15 +1,12 @@
 package tests.base;
 
 import com.codeborne.selenide.Configuration;
-
 import com.codeborne.selenide.logevents.SelenideLogger;
-
-
 import io.qameta.allure.selenide.AllureSelenide;
-
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.Listeners;
+import org.testng.annotations.Optional;
+import org.testng.annotations.Parameters;
 import steps.AddWorkoutSteps;
 import steps.CalculatorSteps;
 import steps.LoginSteps;
@@ -18,32 +15,30 @@ import utils.PropertyReader;
 
 import static com.codeborne.selenide.WebDriverRunner.getWebDriver;
 
-@Listeners({TestListener.class})
-
 public class BaseTest {
 
+    public String user;
+    public String password;
     protected LoginSteps loginSteps;
     protected RegistrationSteps registrationSteps;
     protected AddWorkoutSteps addWorkoutSteps;
     protected CalculatorSteps calculatorSteps;
 
-    public String user;
-    public String password;
-
+    @Parameters({"browser"})
     @BeforeMethod(description = "Opening browser")
-    public void setup() {
+    public void setup(@Optional("chrome") String browser) {
         user = System.getProperty("user", PropertyReader.getProperty("user"));
+
         password = System.getProperty("password", PropertyReader.getProperty("password"));
 
-
-        SelenideLogger.addListener("AllureSelenide", new AllureSelenide().screenshots(true).savePageSource(true));
-
-
         Configuration.baseUrl = "https://log.finalsurge.com/";
-        Configuration.browser = "chrome";
-        Configuration.headless = false;
+        Configuration.browser = browser;
+        Configuration.headless = true;
         Configuration.clickViaJs = true;
         Configuration.timeout = 10000;
+
+        SelenideLogger.addListener("AllureSelenide", new AllureSelenide());
+        Configuration.reportsFolder = "target/allure-results";
 
         loginSteps = new LoginSteps();
         registrationSteps = new RegistrationSteps();
@@ -53,7 +48,8 @@ public class BaseTest {
 
     @AfterMethod(alwaysRun = true, description = "Closing browser")
     public void close() {
-        if (getWebDriver() != null)
+        if (getWebDriver() != null) {
             getWebDriver().quit();
+        }
     }
 }

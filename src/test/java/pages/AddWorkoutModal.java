@@ -13,14 +13,17 @@ import wrappers.TextArea;
 
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.$;
+import static org.testng.Assert.assertEquals;
 
 @Log4j2
 public class AddWorkoutModal extends BasePage {
 
     public static final String MESSAGE = "Add New Workout";
     public static final By ADD_WORKOUT_BUTTON = By.xpath("//input[@type = 'submit']");
+    public static final By LOCATOR_ERROR_MESSAGE = By.xpath("//div[@class = 'alert alert-error']");
 
     @Override
+    @Step("Waiting for add workout modal page to be opened")
     public AddWorkoutModal isPageOpened() {
         log.info("Waiting for add workout modal page to be opened");
         $(byText(MESSAGE)).shouldBe(Condition.visible);
@@ -55,10 +58,23 @@ public class AddWorkoutModal extends BasePage {
     }
 
     @Step("Click on button 'Add workout'")
-    public WorkoutDetailsPage save() {
+    public void save() {
         log.info("Click on button 'Add workout'");
         $(ADD_WORKOUT_BUTTON).click();
-        return new WorkoutDetailsPage();
+    }
+
+    @Step("Get error message")
+    public String getErrorMessage() {
+        log.info("Get error message");
+        return $(LOCATOR_ERROR_MESSAGE).getText().split(":")[1].substring(1);
+    }
+
+    @Step("Validation error")
+    public void validateErrorAddWorkout(String expectedErrorMessage) {
+        log.info("Validation error");
+        assertEquals(getErrorMessage(),
+                expectedErrorMessage,
+                "Error message not correct");
     }
 }
 

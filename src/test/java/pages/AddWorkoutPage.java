@@ -15,6 +15,7 @@ import static com.codeborne.selenide.Selenide.open;
 public class AddWorkoutPage extends BasePage {
 
     @Override
+    @Step("Waiting for add workout page to be opened")
     public AddWorkoutPage isPageOpened() {
         log.info("Waiting for add workout page to be opened");
         $(byText("Select an Activity Type")).shouldBe(Condition.visible);
