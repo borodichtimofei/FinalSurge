@@ -23,8 +23,4 @@ public class Calculator {
     String hours;
     String minutes;
     String seconds;
-
-
-
-
 }

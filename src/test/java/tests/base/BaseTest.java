@@ -1,11 +1,12 @@
 package tests.base;
 
 import com.codeborne.selenide.Configuration;
-import com.codeborne.selenide.Selenide;
+
 import com.codeborne.selenide.logevents.SelenideLogger;
-import com.codeborne.selenide.testng.ScreenShooter;
+
+
 import io.qameta.allure.selenide.AllureSelenide;
-import org.openqa.selenium.support.events.WebDriverEventListener;
+
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Listeners;
@@ -15,11 +16,10 @@ import steps.LoginSteps;
 import steps.RegistrationSteps;
 import utils.PropertyReader;
 
-import static com.codeborne.selenide.WebDriverRunner.addListener;
 import static com.codeborne.selenide.WebDriverRunner.getWebDriver;
 
 @Listeners({TestListener.class})
-//{ScreenShooter.class}
+
 public class BaseTest {
 
     protected LoginSteps loginSteps;
@@ -35,8 +35,9 @@ public class BaseTest {
         user = System.getProperty("user", PropertyReader.getProperty("user"));
         password = System.getProperty("password", PropertyReader.getProperty("password"));
 
-//        ScreenShooter.captureSuccessfulTests = true;
+
         SelenideLogger.addListener("AllureSelenide", new AllureSelenide().screenshots(true).savePageSource(true));
+
 
         Configuration.baseUrl = "https://log.finalsurge.com/";
         Configuration.browser = "chrome";

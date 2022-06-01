@@ -25,10 +25,11 @@ public class AddWorkoutTest extends BaseTest {
                 .caloriesBurned("1500")
                 .build();
         addWorkoutSteps.addWorkout("Run", "Marathon Pace", workout);
+        addWorkoutSteps.validate("Run", "Marathon Pace", workout);
     }
 
     @Test(description = "Add new workout with correct data")
-    public void workoutBikeTypeWithCorrectDataShouldBeCreated() {
+    public void workoutBikeWithCorrectDataShouldBeCreated() {
         loginSteps.login(user, password);
         Workout workout = Workout.builder()
                 .name("Test")
@@ -54,10 +55,11 @@ public class AddWorkoutTest extends BaseTest {
                 .caloriesBurned("1500")
                 .build();
         addWorkoutSteps.addWorkout("Bike", "Tempo", workout);
+        addWorkoutSteps.validate("Bike", "Tempo", workout);
     }
 
     @Test(description = "Add new workout with correct data")
-    public void workoutRestDayTypeWithCorrectDataShouldBeCreated() {
+    public void workoutRestDayWithCorrectDataShouldBeCreated() {
         loginSteps.login(user, password);
         Workout workout = Workout.builder()
                 .name("Test Rest Day workout in Tempo")
@@ -65,5 +67,6 @@ public class AddWorkoutTest extends BaseTest {
                 .description("Test description")
                 .build();
         addWorkoutSteps.addWorkout("Rest Day", "No Sub-Type", workout);
+        addWorkoutSteps.validate("Rest Day", "No Sub-Type", workout);
     }
 }

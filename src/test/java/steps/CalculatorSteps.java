@@ -9,12 +9,12 @@ public class CalculatorSteps {
     NavigationPage navigationPage;
     CalculatorModal calculatorModal;
 
-    public CalculatorSteps(){
+    public CalculatorSteps() {
         navigationPage = new NavigationPage();
         calculatorModal = new CalculatorModal();
     }
 
-    public void calculator(String typeCalculator, Calculator calculator){
+    public void calculator(String typeCalculator, Calculator calculator) {
         navigationPage.selectCalculator();
         calculatorModal.selectCalculatorType(typeCalculator);
         calculatorModal.calculation(calculator);

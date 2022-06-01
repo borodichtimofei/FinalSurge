@@ -29,11 +29,9 @@ public class NavigationPage extends BasePage {
         return new AddWorkoutPage();
     }
 
-    public CalculatorModal selectCalculator(){
+    public CalculatorModal selectCalculator() {
         $(CALCULATOR_SELECT).click();
         switchTo().frame($(CALCULATOR_FRAME));
         return new CalculatorModal();
     }
-
-
 }

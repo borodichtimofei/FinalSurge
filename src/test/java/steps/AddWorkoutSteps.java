@@ -26,6 +26,9 @@ public class AddWorkoutSteps {
                 create(workout).
                 save().
                 isPageOpened();
+    }
+
+    public void validate(String activity, String typeActivity, Workout workout) {
         workoutDetailsPage.validateActivity(activity, typeActivity);
         workoutDetailsPage.validateWorkout(workout);
     }

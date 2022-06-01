@@ -7,7 +7,7 @@ import tests.base.BaseTest;
 public class CalculatorTest extends BaseTest {
 
     @Test
-    public void test(){
+    public void test() {
         loginSteps.login(user, password);
         Calculator calculator = Calculator.builder().
                 distance("10").

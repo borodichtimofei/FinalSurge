@@ -42,7 +42,7 @@ public class AddWorkoutPage extends BasePage {
             return new AddWorkoutModal();
         } else
             $(byText(typeActivity)).click();
-            $(byText(typeActivity)).shouldBe(Condition.visible);
+        $(byText(typeActivity)).shouldBe(Condition.visible);
         return new AddWorkoutModal();
     }
 }
