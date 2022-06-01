@@ -11,6 +11,10 @@ import static com.codeborne.selenide.Selenide.$;
 @Log4j2
 public class DropDown {
 
+    public static final String LOCATOR_REGISTRATION = "//label[text()='%s']/../select";
+    public static final String LOCATOR_WORKOUT_BASIC = "//label[text()='%s']//../following-sibling::select";
+    public static final String LOCATOR_WORKOUT_SECONDARY = "(//label[text()='%s']//../following-sibling::select)[2]";
+
     String label;
 
     public DropDown(String label) {
@@ -20,7 +24,7 @@ public class DropDown {
     @Step("Select: {option} into: {label}")
     public void selectForRegistration(String option) {
         log.info("Select {} into {}", option, label);
-        $(By.xpath(String.format("//label[text()='%s']/../select", label))).click();
+        $(By.xpath(String.format(LOCATOR_REGISTRATION, label))).click();
         $(byText(option)).click();
     }
 
@@ -28,7 +32,7 @@ public class DropDown {
     public void basicSelectForAddWorkout(String option) {
         if (StringUtils.isNoneEmpty(option)) {
             log.info("Select {} into {}", option, label);
-            $(By.xpath(String.format("//label[text()='%s']//../following-sibling::select", label))).
+            $(By.xpath(String.format(LOCATOR_WORKOUT_BASIC, label))).
                     selectOption(option);
         }
     }
@@ -37,7 +41,7 @@ public class DropDown {
     public void secondarySelectForAddWorkout(String option) {
         if (StringUtils.isNoneEmpty(option)) {
             log.info("Select {} into {}", option, label);
-            $(By.xpath(String.format("(//label[text()='%s']//../following-sibling::select)[2]", label))).
+            $(By.xpath(String.format(LOCATOR_WORKOUT_SECONDARY, label))).
                     selectOption(option);
         }
     }

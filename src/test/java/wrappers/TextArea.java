@@ -10,6 +10,8 @@ import static com.codeborne.selenide.Selenide.$;
 @Log4j2
 public class TextArea {
 
+    public static final String LOCATOR_WORKOUT = "//label[text()='%s']//../following-sibling::textarea";
+
     String label;
 
     public TextArea(String label) {
@@ -20,8 +22,8 @@ public class TextArea {
     public void write(String text) {
         if (StringUtils.isNoneEmpty(text)) {
             log.info("Writing {} into  {}", text, label);
-            $(By.xpath(String.format("//label[text()='%s']//../following-sibling::textarea", label))).clear();
-            $(By.xpath(String.format("//label[text()='%s']//../following-sibling::textarea", label))).sendKeys(text);
+            $(By.xpath(String.format(LOCATOR_WORKOUT, label))).clear();
+            $(By.xpath(String.format(LOCATOR_WORKOUT, label))).sendKeys(text);
         }
     }
 }

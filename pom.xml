@@ -9,21 +9,22 @@
     <version>1.0-SNAPSHOT</version>
 
     <properties>
-        <maven.compiler.source>17</maven.compiler.source>
-        <maven.compiler.target>17</maven.compiler.target>
+        <maven.compiler.source>11</maven.compiler.source>
+        <maven.compiler.target>11</maven.compiler.target>
         <selenide.version>6.4.0</selenide.version>
         <testng.version>7.5</testng.version>
         <javafaker.version>1.0.2</javafaker.version>
-        <lombok.version>1.18.22</lombok.version>
+        <lombok.version>1.18.24</lombok.version>
         <aspectjweaver.version>1.9.9.1</aspectjweaver.version>
         <suiteXmlFile>src/test/resources/smoke.xml</suiteXmlFile>
         <allure.version>2.10.0</allure.version>
         <maven.version>3.0.0-M4</maven.version>
         <log4j.version>2.17.2</log4j.version>
-        <jackson.version>2.13.2</jackson.version>
+        <jackson.version>2.13.3</jackson.version>
         <alluretestng.version>2.17.3</alluretestng.version>
         <restassured.version>5.0.1</restassured.version>
         <json.version>2.9.0</json.version>
+        <allure-selenide>2.18.1</allure-selenide>
     </properties>
 
     <build>
@@ -115,6 +116,12 @@
             <groupId>com.google.code.gson</groupId>
             <artifactId>gson</artifactId>
             <version>${json.version}</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/io.qameta.allure/allure-selenide -->
+        <dependency>
+            <groupId>io.qameta.allure</groupId>
+            <artifactId>allure-selenide</artifactId>
+            <version>${allure-selenide}</version>
         </dependency>
     </dependencies>
 </project>

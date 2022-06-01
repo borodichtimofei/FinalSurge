@@ -10,30 +10,31 @@ public class AddWorkoutTest extends BaseTest {
     public void workoutRunTypeWithCorrectDataShouldBeCreated() {
         loginSteps.login(user, password);
         Workout workout = Workout.builder()
-                .name("Test Run Long Run workout")
-                .date("5/28/2022")
-                .timeOfDay("05:30")
+                .name("Test")
+                .date("5/30/2022")
+                .timeOfDay("05:30 AM")
                 .description("Test description")
                 .distance("10")
                 .distanceType("km")
                 .duration("10")
                 .perceivedEffort("8 (Hard)")
                 .howIFeltType("Normal")
-                .minHR("60")
+                .hrMin("60")
                 .hrAvg("90")
                 .hrMax("120")
                 .caloriesBurned("1500")
                 .build();
-        addWorkoutSteps.addWorkout("Run", "Long Run", workout);
+        addWorkoutSteps.addWorkout("Run", "Marathon Pace", workout);
+        addWorkoutSteps.validate("Run", "Marathon Pace", workout);
     }
 
     @Test(description = "Add new workout with correct data")
-    public void workoutBikeTypeWithCorrectDataShouldBeCreated() {
+    public void workoutBikeWithCorrectDataShouldBeCreated() {
         loginSteps.login(user, password);
         Workout workout = Workout.builder()
-                .name("Test Bike without Type workout")
-                .date("5/30/2022")
-                .timeOfDay("11:30")
+                .name("Test")
+                .date("5/31/2022")
+                .timeOfDay("11:30 PM")
                 .description("Test description")
                 .distance("10")
                 .distanceType("km")
@@ -53,11 +54,12 @@ public class AddWorkoutTest extends BaseTest {
                 .hrMax("120")
                 .caloriesBurned("1500")
                 .build();
-        addWorkoutSteps.addWorkout("Bike", "No Sub-Type", workout);
+        addWorkoutSteps.addWorkout("Bike", "Tempo", workout);
+        addWorkoutSteps.validate("Bike", "Tempo", workout);
     }
 
     @Test(description = "Add new workout with correct data")
-    public void workoutRestDayTypeWithCorrectDataShouldBeCreated() {
+    public void workoutRestDayWithCorrectDataShouldBeCreated() {
         loginSteps.login(user, password);
         Workout workout = Workout.builder()
                 .name("Test Rest Day workout in Tempo")
@@ -65,5 +67,6 @@ public class AddWorkoutTest extends BaseTest {
                 .description("Test description")
                 .build();
         addWorkoutSteps.addWorkout("Rest Day", "No Sub-Type", workout);
+        addWorkoutSteps.validate("Rest Day", "No Sub-Type", workout);
     }
 }

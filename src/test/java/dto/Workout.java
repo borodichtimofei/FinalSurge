@@ -1,20 +1,19 @@
 package dto;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
+@EqualsAndHashCode(exclude = {"date", "timeOfDay", "duration", "elevationGain", "elevationGainType",
+        "elevationLoss", "elevationLossType", "perceivedEffort", "avgPower", "maxPower",
+        "avgCadence", "maxCadence", "hrMax"})
 public class Workout {
     String date;
     String timeOfDay;
     String name;
     String description;
-    String minHR;
     String distance;
     String distanceType;
     String duration;
