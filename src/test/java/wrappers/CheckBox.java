@@ -18,10 +18,10 @@ public class CheckBox {
         this.label = label;
     }
 
-    @Step("Click: {option} on: {label}")
+    @Step("Click: {option} on: {this.label}")
     public void click(String option) {
         if (StringUtils.isNoneEmpty(option)) {
-            log.info("Select {} into {}", option, label);
+            log.info("Select {} on {}", option, label);
             $(By.xpath(String.format(LOCATOR_WORKOUT, label, option))).
                     click();
         }

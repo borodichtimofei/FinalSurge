@@ -16,6 +16,7 @@ public class LoginPage extends BasePage {
     public static final By PASSWORD = By.id("login_password");
 
     @Override
+    @Step("Waiting for login page to be opened")
     public LoginPage isPageOpened() {
         log.info("Waiting for login page to be opened");
         $(USER_EMAIL).shouldBe(Condition.visible);

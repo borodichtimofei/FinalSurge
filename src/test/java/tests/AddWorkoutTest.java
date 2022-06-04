@@ -10,9 +10,9 @@ public class AddWorkoutTest extends BaseTest {
     public void workoutRunTypeWithCorrectDataShouldBeCreated() {
         loginSteps.login(user, password);
         Workout workout = Workout.builder()
-                .name("Test")
-                .date("5/30/2022")
-                .timeOfDay("05:30 AM")
+                .name("Test name")
+                .date("6/02/2022")
+                .timeOfDay("11:30 AM")
                 .description("Test description")
                 .distance("10")
                 .distanceType("km")
@@ -32,9 +32,9 @@ public class AddWorkoutTest extends BaseTest {
     public void workoutBikeWithCorrectDataShouldBeCreated() {
         loginSteps.login(user, password);
         Workout workout = Workout.builder()
-                .name("Test")
-                .date("5/31/2022")
-                .timeOfDay("11:30 PM")
+                .name("Test name")
+                .date("6/01/2022")
+                .timeOfDay("10:45 PM")
                 .description("Test description")
                 .distance("10")
                 .distanceType("km")
@@ -62,11 +62,24 @@ public class AddWorkoutTest extends BaseTest {
     public void workoutRestDayWithCorrectDataShouldBeCreated() {
         loginSteps.login(user, password);
         Workout workout = Workout.builder()
-                .name("Test Rest Day workout in Tempo")
-                .date("5/30/2022")
+                .name("Test name")
+                .date("6/01/2022")
                 .description("Test description")
                 .build();
         addWorkoutSteps.addWorkout("Rest Day", "No Sub-Type", workout);
         addWorkoutSteps.validate("Rest Day", "No Sub-Type", workout);
+    }
+
+    @Test(description = "Add new workout with incorrect data")
+    public void workoutSwimWithoutValuesDataNotShouldBeCreated() {
+        loginSteps.login(user, password);
+        Workout workout = Workout.builder()
+                .name("Test name")
+                .date(" ")
+                .timeOfDay("10:45 PM")
+                .description("Test description")
+                .build();
+        addWorkoutSteps.addWorkout("Swim", "Open Water", workout);
+        addWorkoutSteps.validateErrorMessage("*Please enter a value for Workout Date.");
     }
 }

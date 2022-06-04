@@ -1,11 +1,11 @@
 package pages;
 
 import com.codeborne.selenide.Condition;
+import io.qameta.allure.Step;
 import lombok.extern.log4j.Log4j2;
 import org.openqa.selenium.By;
 import pages.base.BasePage;
 
-import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.switchTo;
 
@@ -17,18 +17,14 @@ public class NavigationPage extends BasePage {
     public static final By CALCULATOR_FRAME = By.id("OtherCalciFrame");
 
     @Override
+    @Step("Waiting for navigation page to be opened")
     public NavigationPage isPageOpened() {
         log.info("Waiting for navigation page to be opened");
         $(USER_INFO).shouldBe(Condition.visible);
         return this;
     }
 
-    public AddWorkoutPage selectMenuFunction(String menuName, String functionName) {
-        $(byText(menuName)).hover();
-        $(byText(functionName)).click();
-        return new AddWorkoutPage();
-    }
-
+    @Step("Click on calculator button")
     public CalculatorModal selectCalculator() {
         $(CALCULATOR_SELECT).click();
         switchTo().frame($(CALCULATOR_FRAME));

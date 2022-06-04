@@ -1,26 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite name="Smoke Suite">
+<suite name="Smoke Suite" parallel="tests" thread-count="2">
     <listeners>
         <listener class-name="tests.base.AnnotationTransformer"/>
-        <listener class-name="tests.base.TestListener"/>
     </listeners>
-    <test name="Login">
+    <test name="chrome">
+        <parameter name="browser" value="chrome"/>
         <classes>
-            <class name="tests.LoginTest">
-            </class>
+            <class name="tests.AddWorkoutTest"/>
+            <class name="tests.RegistrationTest"/>
+            <class name="tests.CalculatorTest"/>
+            <class name="tests.LoginTest"/>
         </classes>
     </test>
-    <test name="Registration">
+    <test name="firefox">
+        <parameter name="browser" value="firefox"/>
         <classes>
-            <class name="tests.RegistrationTest">
-            </class>
-        </classes>
-    </test>
-    <test name="Add Workout">
-        <classes>
-            <class name="tests.AddWorkoutTest">
-            </class>
+            <class name="tests.AddWorkoutTest"/>
+            <class name="tests.RegistrationTest"/>
+            <class name="tests.CalculatorTest"/>
+            <class name="tests.LoginTest"/>
         </classes>
     </test>
 </suite>

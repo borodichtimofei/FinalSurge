@@ -36,19 +36,19 @@ public class WorkoutDetailsPage extends BasePage {
     }
 
     @Step("Validation activity")
-    public void validateActivity(String activity, String typeActivity) {
+    public void validateActivity(String expectedActivity, String expectedTypeActivity) {
         log.info("Validation activity type");
         assertEquals(
                 getActivity(),
-                activity,
+                expectedActivity,
                 "Activity name is not valid");
-        if (typeActivity.equals("No Sub-Type")) {
-            typeActivity = null;
+        if (expectedTypeActivity.equals("No Sub-Type")) {
+            expectedTypeActivity = null;
         }
         assertEquals(
                 getActivityType(),
-                typeActivity,
-                "Activity name is not valid");
+                expectedTypeActivity,
+                "Activity type is not valid");
     }
 
     public String getName() {

@@ -10,13 +10,6 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @Builder
 public class Calculator {
-    String weight;
-    String weightType;
-    String height;
-    String heightType;
-    String age;
-    String gender;
-    String runDistance;
     String distance;
     String typeDistance;
     String raceDistance;
