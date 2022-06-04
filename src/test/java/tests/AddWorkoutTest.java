@@ -7,7 +7,7 @@ import tests.base.BaseTest;
 public class AddWorkoutTest extends BaseTest {
 
     @Test(description = "Add new workout with correct data")
-    public void workoutRunTypeWithCorrectDataShouldBeCreated() {
+    public void workoutRunTypeWithCorrectDataShouldBeAdded() {
         loginSteps.login(user, password);
         Workout workout = Workout.builder()
                 .name("Test name")
@@ -29,7 +29,7 @@ public class AddWorkoutTest extends BaseTest {
     }
 
     @Test(description = "Add new workout with correct data")
-    public void workoutBikeWithCorrectDataShouldBeCreated() {
+    public void workoutBikeWithCorrectDataShouldBeAdded() {
         loginSteps.login(user, password);
         Workout workout = Workout.builder()
                 .name("Test name")
@@ -59,7 +59,7 @@ public class AddWorkoutTest extends BaseTest {
     }
 
     @Test(description = "Add new workout with correct data")
-    public void workoutRestDayWithCorrectDataShouldBeCreated() {
+    public void workoutRestDayWithCorrectDataShouldBeAdded() {
         loginSteps.login(user, password);
         Workout workout = Workout.builder()
                 .name("Test name")
@@ -71,7 +71,7 @@ public class AddWorkoutTest extends BaseTest {
     }
 
     @Test(description = "Add new workout with incorrect data")
-    public void workoutSwimWithoutValuesDataNotShouldBeCreated() {
+    public void workoutSwimWithoutValuesDataNotShouldBeAdded() {
         loginSteps.login(user, password);
         Workout workout = Workout.builder()
                 .name("Test name")

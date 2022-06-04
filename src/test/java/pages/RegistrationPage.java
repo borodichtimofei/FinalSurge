@@ -16,13 +16,11 @@ import static org.testng.Assert.assertEquals;
 @Log4j2
 public class RegistrationPage extends BasePage {
 
-    public static final By FIRST_NAME = By.id("create_first");
-    public static final By REGISTRATION_MESSAGE = By.xpath("//div[@class = 'alert alert-error']");
+    public static final By FIRST_NAME = By.id("create_first"),
+            REGISTRATION_MESSAGE = By.xpath("//div[@class = 'alert alert-error']");
 
     @Override
-    @Step("Waiting for registration page to be opened")
     public RegistrationPage isPageOpened() {
-        log.info("Waiting for registration page to be opened");
         $(FIRST_NAME).shouldBe(Condition.visible);
         return this;
     }

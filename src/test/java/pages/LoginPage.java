@@ -12,13 +12,11 @@ import static com.codeborne.selenide.Selenide.open;
 @Log4j2
 public class LoginPage extends BasePage {
 
-    public static final By USER_EMAIL = By.id("login_name");
-    public static final By PASSWORD = By.id("login_password");
+    public static final By USER_EMAIL = By.id("login_name"),
+            PASSWORD = By.id("login_password");
 
     @Override
-    @Step("Waiting for login page to be opened")
     public LoginPage isPageOpened() {
-        log.info("Waiting for login page to be opened");
         $(USER_EMAIL).shouldBe(Condition.visible);
         return this;
     }

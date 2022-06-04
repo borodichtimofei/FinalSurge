@@ -12,14 +12,12 @@ import static com.codeborne.selenide.Selenide.switchTo;
 @Log4j2
 public class NavigationPage extends BasePage {
 
-    public static final By USER_INFO = By.xpath("//div[@class = 'user-info']");
-    public static final By CALCULATOR_SELECT = By.xpath("//i[@class = 'icsw16-calculator']");
-    public static final By CALCULATOR_FRAME = By.id("OtherCalciFrame");
+    public static final By USER_INFO = By.xpath("//div[@class = 'user-info']"),
+            CALCULATOR_SELECT = By.xpath("//i[@class = 'icsw16-calculator']"),
+            CALCULATOR_FRAME = By.id("OtherCalciFrame");
 
     @Override
-    @Step("Waiting for navigation page to be opened")
     public NavigationPage isPageOpened() {
-        log.info("Waiting for navigation page to be opened");
         $(USER_INFO).shouldBe(Condition.visible);
         return this;
     }

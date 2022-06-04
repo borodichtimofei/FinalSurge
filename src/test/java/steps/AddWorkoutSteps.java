@@ -33,6 +33,6 @@ public class AddWorkoutSteps {
     }
 
     public void validateErrorMessage(String expectedErrorMessage) {
-        addWorkoutModal.validateErrorAddWorkout(expectedErrorMessage);
+        addWorkoutModal.validateErrorMessageAddWorkout(expectedErrorMessage);
     }
 }

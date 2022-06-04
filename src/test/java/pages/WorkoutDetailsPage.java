@@ -16,9 +16,7 @@ import static org.testng.Assert.assertEquals;
 public class WorkoutDetailsPage extends BasePage {
 
     @Override
-    @Step("Waiting for workout details page to be opened")
     public WorkoutDetailsPage isPageOpened() {
-        log.info("Waiting for workout details page to be opened");
         $(byText("Workout Details")).shouldBe(Condition.visible);
         return this;
     }

@@ -17,16 +17,14 @@ import static org.testng.Assert.assertEquals;
 @Log4j2
 public class CalculatorModal extends BasePage {
 
-    public static final By BUTTON_CALCULATE_PACES = By.id("saveButtonSettings");
-    public static final By LOCATOR_RESULT_PACE_PER = By.xpath("//table[@class = 'table table-condensed table-hover']//tr[1]//td[1]");
-    public static final By LOCATOR_RESULT_TIME = By.xpath("//table[@class = 'table table-condensed table-hover']//tr[1]//td[2]");
-    public static final By LOCATOR_RESULT_SPEED = By.xpath("//table[@class = 'table table-condensed table-hover']//tr[1]//td[3]");
-    public static final By LOCATOR_ERROR_MESSAGE = By.xpath("//div[@class = 'alert alert-error']");
+    public static final By BUTTON_CALCULATE_PACES = By.id("saveButtonSettings"),
+            LOCATOR_RESULT_PACE_PER = By.xpath("//table[@class = 'table table-condensed table-hover']//tr[1]//td[1]"),
+            LOCATOR_RESULT_TIME = By.xpath("//table[@class = 'table table-condensed table-hover']//tr[1]//td[2]"),
+            LOCATOR_RESULT_SPEED = By.xpath("//table[@class = 'table table-condensed table-hover']//tr[1]//td[3]"),
+            LOCATOR_ERROR_MESSAGE = By.xpath("//div[@class = 'alert alert-error']");
 
     @Override
-    @Step("Waiting for add calculator modal to be opened")
     public CalculatorModal isPageOpened() {
-        log.info("Waiting for add calculator modal to be opened");
         $(byText("Caloric Needs")).shouldBe(Condition.visible);
         return this;
     }
@@ -38,9 +36,9 @@ public class CalculatorModal extends BasePage {
         return this;
     }
 
-    @Step("Enter values for the calculator")
+    @Step("Filling in the calculator form")
     public CalculatorModal enterValues(Calculator calculator) {
-        log.info("Enter values for the calculator");
+        log.info("Filling in the calculator form");
         new Input("Distance").writeCalculatorDistance(calculator.getDistance());
         new DropDown("Distance").selectForCalculatorType(calculator.getTypeDistance());
         new DropDown("Distance").selectForCalculatorRace(calculator.getRaceDistance());
@@ -87,15 +85,15 @@ public class CalculatorModal extends BasePage {
                 "Result speed not valid");
     }
 
-    @Step("Get error message")
+    @Step("Getting the error message")
     public String getErrorMessage() {
-        log.info("Get error message");
+        log.info("Getting the error message");
         return $(LOCATOR_ERROR_MESSAGE).getText().split(":")[1].substring(1);
     }
 
-    @Step("Validation error")
+    @Step("Error message validation when calculation")
     public void validateErrorCalculation(String expectedErrorMessage) {
-        log.info("Validation error");
+        log.info("Error message validation when calculation");
         assertEquals(getErrorMessage(),
                 expectedErrorMessage,
                 "Error message not correct");

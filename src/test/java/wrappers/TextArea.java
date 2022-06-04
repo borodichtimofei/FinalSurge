@@ -18,10 +18,10 @@ public class TextArea {
         this.label = label;
     }
 
-    @Step("Writing: {text} into: {this.label}")
+    @Step("Writing: '{text}' into: '{this.label}'")
     public void write(String text) {
         if (StringUtils.isNoneEmpty(text)) {
-            log.info("Writing {} into  {}", text, label);
+            log.info("Writing '{}' into '{}'", text, label);
             $(By.xpath(String.format(LOCATOR_WORKOUT, label))).clear();
             $(By.xpath(String.format(LOCATOR_WORKOUT, label))).sendKeys(text);
         }
