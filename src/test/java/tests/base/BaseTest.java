@@ -27,9 +27,9 @@ public class BaseTest {
     @Parameters({"browser"})
     @BeforeMethod(description = "Opening browser")
     public void setup(@Optional("chrome") String browser) {
-        user = System.getProperty("user", PropertyReader.getProperty("user"));
+        user = System.getProperty("final.surge.user", PropertyReader.getProperty("user"));
 
-        password = System.getProperty("password", PropertyReader.getProperty("password"));
+        password = System.getProperty("final.surge.password", PropertyReader.getProperty("password"));
 
         Configuration.baseUrl = "https://log.finalsurge.com/";
         Configuration.browser = browser;
