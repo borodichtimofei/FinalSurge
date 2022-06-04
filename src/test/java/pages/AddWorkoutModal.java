@@ -67,9 +67,9 @@ public class AddWorkoutModal extends BasePage {
         return $(LOCATOR_ERROR_MESSAGE).getText().split(":")[1].substring(1);
     }
 
-    @Step("Error message validation when adding a workout")
+    @Step("Validation of error message when adding a workout")
     public void validateErrorMessageAddWorkout(String expectedErrorMessage) {
-        log.info("Error message validation when adding a workout");
+        log.info("Validation of error message when adding a workout");
         assertEquals(getErrorMessage(),
                 expectedErrorMessage,
                 "Error message not correct");

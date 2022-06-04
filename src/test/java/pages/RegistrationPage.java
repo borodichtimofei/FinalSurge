@@ -44,9 +44,9 @@ public class RegistrationPage extends BasePage {
         return this;
     }
 
-    @Step("Validate registration")
+    @Step("Validation of error message when registration")
     public void validate(String expectedMessage) {
-        log.info("Validate registration");
+        log.info("Validation of error message when registration");
         String actualMessage = $(REGISTRATION_MESSAGE).getText();
         assertEquals(actualMessage, expectedMessage);
     }

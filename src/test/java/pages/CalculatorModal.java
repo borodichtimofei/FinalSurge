@@ -91,9 +91,9 @@ public class CalculatorModal extends BasePage {
         return $(LOCATOR_ERROR_MESSAGE).getText().split(":")[1].substring(1);
     }
 
-    @Step("Error message validation when calculation")
+    @Step("Validation of error message when calculation")
     public void validateErrorCalculation(String expectedErrorMessage) {
-        log.info("Error message validation when calculation");
+        log.info("Validation of error message when calculation");
         assertEquals(getErrorMessage(),
                 expectedErrorMessage,
                 "Error message not correct");
