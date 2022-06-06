@@ -5,6 +5,13 @@ pipeline {
      gitParameter branchFilter: 'origin/(.*)', defaultValue: 'master', name: 'BRANCH', type: 'PT_BRANCH'
     }
 
+    properties{
+      parameters{
+        string(name: 'user', defaultValue: ''),
+        string(name: 'password', defaultValue: ''),
+      }
+    }
+
     tools {
         // Install the Maven version configured as "M3" and add it to the path.
         maven "M3"
