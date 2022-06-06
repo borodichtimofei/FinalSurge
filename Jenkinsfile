@@ -3,8 +3,6 @@ pipeline {
 
     parameters {
      gitParameter branchFilter: 'origin/(.*)', defaultValue: 'master', name: 'BRANCH', type: 'PT_BRANCH'
-         properties([parameters([string(defaultValue: '" "', name: 'user')])])
-         properties([parameters([string(defaultValue: '" "', name: 'password')])])
     }
 
     tools {
